@@ -355,3 +355,98 @@ Vercel 자동 배포
 - Toast
 - Tooltip
 - 디자인 시스템 구축
+
+
+# ===========================
+# Git Cheat Sheet
+# ===========================
+
+# 현재 상태 확인
+git status
+
+# 최신 코드 받기
+git pull
+
+# 변경사항 추가
+git add .
+
+# 특정 파일만 추가
+git add 파일명
+
+# 커밋
+git commit -m "커밋 내용"
+
+# GitHub 업로드
+git push
+
+# ---------------------------
+# stash
+# ---------------------------
+
+# 현재 작업 임시 저장
+git stash
+
+# 메시지와 함께 저장
+git stash push -m "작업 내용"
+
+# stash 목록 보기
+git stash list
+
+# 가장 최근 stash 적용 후 삭제
+git stash pop
+
+# 적용만 하고 stash는 유지
+git stash apply
+
+# 특정 stash 적용
+git stash pop stash@{0}
+
+# 특정 stash 삭제
+git stash drop stash@{0}
+
+# stash 전부 삭제
+git stash clear
+
+# ---------------------------
+# 로그 / 확인
+# ---------------------------
+
+# 커밋 내역
+git log --oneline
+
+# 변경 내용 보기
+git diff
+
+# 브랜치 확인
+git branch
+
+# 원격 저장소 확인
+git remote -v
+
+# ---------------------------
+# 되돌리기
+# ---------------------------
+
+# add 취소
+git restore --staged .
+
+# 수정 내용 취소
+git restore 파일명
+
+# ---------------------------
+# 실무에서 가장 많이 쓰는 순서
+# ---------------------------
+
+git pull
+git status
+git add .
+git commit -m "작업 내용"
+git push
+
+# ---------------------------
+# pull 전에 작업 중이었다면
+# ---------------------------
+
+git stash
+git pull
+git stash pop
