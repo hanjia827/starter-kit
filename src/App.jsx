@@ -1,5 +1,5 @@
-import "./styles.css";
-import { useState } from "react";
+import { useState } from 'react'
+import './App.css'
 
 const INITIAL_TOPICS = [
   { id: 1, title: "html", body: "html is ..." },
