@@ -12,30 +12,34 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^9.2.0",
+    "@mui/material": "^9.2.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^5.2.1",
     "@eslint/js": "^10.0.1",
+    "@storybook/addon-a11y": "^10.5.5",
+    "@storybook/addon-docs": "^10.5.5",
+    "@storybook/addon-vitest": "^10.5.5",
+    "@storybook/react-vite": "^10.5.5",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
+    "@vitest/browser-playwright": "^4.1.10",
+    "@vitest/coverage-v8": "^4.1.10",
     "eslint": "^10.6.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.3",
-    "globals": "^17.7.0",
-    "vite": "^8.1.1",
-    "storybook": "^10.5.5",
-    "@storybook/react-vite": "^10.5.5",
-    "@chromatic-com/storybook": "^5.2.1",
-    "@storybook/addon-vitest": "^10.5.5",
-    "@storybook/addon-a11y": "^10.5.5",
-    "@storybook/addon-docs": "^10.5.5",
-    "prop-types": "^15.8.1",
     "eslint-plugin-storybook": "^10.5.5",
-    "vitest": "^4.1.10",
+    "globals": "^17.7.0",
     "playwright": "^1.62.1",
-    "@vitest/browser-playwright": "^4.1.10",
-    "@vitest/coverage-v8": "^4.1.10"
+    "prop-types": "^15.8.1",
+    "storybook": "^10.5.5",
+    "vite": "^8.1.1",
+    "vitest": "^4.1.10"
   }
 }

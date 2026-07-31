@@ -1,3 +1,6 @@
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import SaveIcon from '@mui/icons-material/Save';
 import { useState } from 'react'
 import './App.css'
 
@@ -191,6 +194,23 @@ export default function App() {
       >
         Create
       </a>
+
+      <Stack spacing={2} sx={{ p: 5 }}>
+        <Button variant="contained">
+          기본 버튼
+        </Button>
+
+        <Button variant="outlined">
+          외곽 버튼
+        </Button>
+
+        <Button
+          variant="contained"
+          startIcon={<SaveIcon />}
+        >
+          저장
+        </Button>
+      </Stack>
     </div>
   );
 }
