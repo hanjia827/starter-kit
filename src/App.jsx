@@ -1,123 +1,196 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import "./styles.css";
+import { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+const INITIAL_TOPICS = [
+  { id: 1, title: "html", body: "html is ..." },
+  { id: 2, title: "css", body: "css is ..." },
+  { id: 3, title: "javascript", body: "javascript is ..." },
+];
 
+function Header({ title, onSelect }) {
   return (
-    <>
-      <section id="center">
-        test
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+    <header>
+      <h1>
+        <a
+          href="/"
+          onClick={(event) => {
+            event.preventDefault();
+            onSelect();
+          }}
         >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+          {title}
+        </a>
+      </h1>
+    </header>
+  );
 }
 
-export default App
+function Nav({ topics, onSelect }) {
+  return (
+    <nav>
+      <ol>
+        {topics.map((topic) => (
+          <li key={topic.id}>
+            <a
+              href={`/read/${topic.id}`}
+              onClick={(event) => {
+                event.preventDefault();
+                onSelect(topic.id);
+              }}
+            >
+              {topic.title}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
+function Article({ title, body }) {
+  return (
+    <article>
+      <h2>{title}</h2>
+      <p>{body}</p>
+    </article>
+  );
+}
+
+function Create({ onCreate }) {
+  const [form, setForm] = useState({
+    title: "",
+    body: "",
+  });
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+
+    setForm((currentForm) => ({
+      ...currentForm,
+      [name]: value,
+    }));
+  }
+
+  function handleCreate() {
+    const title = form.title.trim();
+    const body = form.body.trim();
+
+    if (!title || !body) {
+      return;
+    }
+
+    onCreate(title, body);
+
+    setForm({
+      title: "",
+      body: "",
+    });
+  }
+
+  return (
+    <article>
+      <h2>Create</h2>
+
+      <form>
+        <p>
+          <input
+            type="text"
+            name="title"
+            placeholder="title"
+            value={form.title}
+            onChange={handleChange}
+          />
+        </p>
+
+        <p>
+          <textarea
+            name="body"
+            placeholder="body"
+            value={form.body}
+            onChange={handleChange}
+          />
+        </p>
+
+        <p>
+          <button type="button" onClick={handleCreate}>
+            Create
+          </button>
+        </p>
+      </form>
+    </article>
+  );
+}
+
+export default function App() {
+  const [topics, setTopics] = useState(INITIAL_TOPICS);
+  const [mode, setMode] = useState("WELCOME");
+  const [selectedId, setSelectedId] = useState(null);
+
+  const selectedTopic = topics.find((topic) => topic.id === selectedId);
+
+  function handleSelectWelcome() {
+    setMode("WELCOME");
+    setSelectedId(null);
+  }
+
+  function handleSelectTopic(id) {
+    setMode("READ");
+    setSelectedId(id);
+  }
+
+  function handleSelectCreate() {
+    setMode("CREATE");
+  }
+
+  function handleCreate(title, body) {
+    const newTopic = {
+      id: crypto.randomUUID(),
+      title,
+      body,
+    };
+
+    setTopics((currentTopics) => [...currentTopics, newTopic]);
+    setMode("READ");
+    setSelectedId(newTopic.id);
+  }
+
+  let content;
+
+  switch (mode) {
+    case "READ":
+      content = selectedTopic ? (
+        <Article title={selectedTopic.title} body={selectedTopic.body} />
+      ) : (
+        <Article title="Not found" body="선택한 글이 없습니다." />
+      );
+      break;
+
+    case "CREATE":
+      content = <Create onCreate={handleCreate} />;
+      break;
+
+    case "WELCOME":
+    default:
+      content = <Article title="Welcome" body="Hello, Web" />;
+  }
+
+  return (
+    <div className="App">
+      <Header title="Header Test" onSelect={handleSelectWelcome} />
+
+      <Nav topics={topics} onSelect={handleSelectTopic} />
+
+      {content}
+
+      <a
+        href="/create"
+        onClick={(event) => {
+          event.preventDefault();
+          handleSelectCreate();
+        }}
+      >
+        Create
+      </a>
+    </div>
+  );
+}
