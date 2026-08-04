@@ -526,7 +526,7 @@ export default function App() {
       image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
     };
 
-    setItemList((currentItems) => [...currentItems, newItem]);
+    setItemList((currentItems) => [newItem, ...currentItems]);
     setSelectedItem(newItem);
     setMode("DETAIL");
   };
