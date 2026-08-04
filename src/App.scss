@@ -1,0 +1,291 @@
+@use "sass:math";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+@function rem($px) {
+  @return math.div($px, 16) * 1rem;
+}
+/* ===========================
+   Reset
+=========================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Pretendard", sans-serif;
+  background-color: #ffffff;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img,
+picture,
+svg,
+canvas,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+address,
+em,
+i {
+  font-style: normal;
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+
+.App {
+  font-family: sans-serif;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-left: rem(40);
+  padding-right: rem(40);
+  padding-bottom: rem(80);
+  max-width: 1480px;
+  margin: 0 auto;
+  width: 100%;
+  &-detail {
+    max-width: 1080px;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    form {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .css-1xp5r68-MuiFormControl-root-MuiTextField-root {
+      flex: 1;
+    }
+    .css-xrmkj5-MuiInputBase-root-MuiOutlinedInput-root {
+      flex: 1;
+      align-items: flex-start;
+    }
+  }
+}
+
+.image-list {
+  &__item {
+    min-width: 0;
+  }
+  &__bar {
+    display: flex;
+    flex-direction: column;
+    gap: rem(12);
+    margin-top: rem(20);
+  }
+  &__image {
+    position: relative;
+    border-radius: rem(8);
+    overflow: hidden;
+  }
+}
+
+.list {
+  &-type {
+    font-weight: 700;
+    line-height: rem(22);
+    font-size: rem(16);
+    color: #666666;
+  }
+  &-title {
+    min-height: rem(56);
+    font-size: rem(22);
+    font-weight: 700;
+  }
+  &-date {
+    margin-bottom: rem(30);
+    font-weight: 300;
+    color: #666666;
+  }
+}
+
+.typography {
+  &__multiEllipsis {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+}
+
+/**tab**/
+.css-jhczcq-MuiTabs-root {
+  &.tab-news {
+    min-height: auto;
+    letter-spacing: rem(-1);
+    .css-hzcega-MuiTabs-list {
+      column-gap: rem(24);
+    }
+    .css-1usuzwp-MuiButtonBase-root-MuiTab-root {
+      min-width: auto;
+      max-width: none;
+      min-height: auto;
+      color: #666666;
+      font-size: rem(16);
+      font-family: "Pretendard", sans-serif;
+      padding: 0 0 rem(8) 0;
+      &.Mui-selected {
+        font-weight: 700;
+        color: #1e64fa;
+      }
+    }
+    .css-1qltlow-MuiTabs-indicator {
+      background-color: #1e64fa;
+      height: rem(4);
+    }
+  }
+}
+
+.tab-pannel {
+  margin-top: rem(32);
+}
+
+header {
+  height: rem(104);
+  display: flex;
+  align-items: center;
+}
+
+.page-title {
+  &__article {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-top: rem(24);
+    margin-bottom: rem(24);
+  }
+  font-size: rem(24);
+  letter-spacing: rem(-1);
+}
+
+.list-detail {
+  &__title {
+    display: flex;
+    padding-top: rem(72);
+    font-size: rem(44);
+  }
+  &__date {
+    display: flex;
+    justify-content: space-between;
+    padding-top: rem(30);
+    padding-bottom: rem(48);
+    font-size: rem(18);
+    color: #666666;
+    font-weight: 700;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding-top: rem(32);
+    font-size: rem(16);
+    font-weight: 400;
+    flex: 1;
+  }
+  &__action {
+    display: flex;
+    align-items: center;
+    padding-top: rem(32);
+    .right {
+      margin-left: auto;
+      gap: rem(4);
+    }
+  }
+}
+
+.col {
+  display: flex;
+}

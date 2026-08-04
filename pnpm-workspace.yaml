@@ -1,4 +1,5 @@
 allowBuilds:
+  '@parcel/watcher': true
   esbuild: true
 minimumReleaseAgeExclude:
   - playwright-core@1.62.1
