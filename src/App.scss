@@ -146,10 +146,10 @@ b {
       flex-direction: column;
       flex: 1;
     }
-    .css-1xp5r68-MuiFormControl-root-MuiTextField-root {
+    .MuiTextField-root {
       flex: 1;
     }
-    .css-xrmkj5-MuiInputBase-root-MuiOutlinedInput-root {
+    .MuiInputBase-multiline {
       flex: 1;
       align-items: flex-start;
     }
@@ -203,14 +203,14 @@ b {
 }
 
 /**tab**/
-.css-jhczcq-MuiTabs-root {
+.MuiTabs-root {
   &.tab-news {
     min-height: auto;
     letter-spacing: rem(-1);
-    .css-hzcega-MuiTabs-list {
+    .MuiTabs-list {
       column-gap: rem(24);
     }
-    .css-1usuzwp-MuiButtonBase-root-MuiTab-root {
+    .MuiTab-root {
       min-width: auto;
       max-width: none;
       min-height: auto;
@@ -223,7 +223,7 @@ b {
         color: #1e64fa;
       }
     }
-    .css-1qltlow-MuiTabs-indicator {
+    .MuiTabs-indicator {
       background-color: #1e64fa;
       height: rem(4);
     }
